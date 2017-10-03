@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <title>webView</title>
+
+</head>
+
+<body>
+<a>js中调用本地方法</a>
+<script>
+
+    function sendParams(){
+        document.getElementById("helloweb").innerHTML="Android 调用Js sendParams()接口成功！！！";
+    }
+    var aTag = document.getElementsByTagName('a')[0];
+    aTag.addEventListener('click', function(){
+        //调用android本地方法
+        stub.getParams("调用android本地方法getParams(String name)！！");
+        return false;
+    }, false);
+
+
+
+</script>
+<p></p>
+<div id="helloweb">
+
+</div>
+</body>
+</html>
