@@ -9,6 +9,7 @@ import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 /**
  * Created by HUANG JIN on 2017/10/3.
@@ -19,10 +20,12 @@ public class ActionWebChromeClient extends WebChromeClient {
     private Context mContext;
     private AlertDialog dialog;
     private ProgressBar progressBar;
+    private TextView tv_title;
 
-    public ActionWebChromeClient(Context mContext, ProgressBar progressBar) {
+    public ActionWebChromeClient(Context mContext, ProgressBar progressBar, TextView tv_title) {
         this.mContext = mContext;
         this.progressBar = progressBar;
+        this.tv_title = tv_title;
     }
 
 
@@ -35,6 +38,7 @@ public class ActionWebChromeClient extends WebChromeClient {
     @Override
     public void onReceivedTitle(WebView view, String title) {
         Log.e(TAG, "onReceivedTitle---title---" + title);
+        tv_title.setText(title);
     }
 
     @Override
