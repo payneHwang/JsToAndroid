@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.js2And.R;
 import com.js2And.client.ActionWebChromeClient;
@@ -17,8 +19,16 @@ public class ActionWeb extends AppCompatActivity {
     private static final String TAG = ActionWeb.class.getSimpleName();
 
     private Context mContext;
+    /**
+     * ui
+     */
     private WebView webView;
+    private ImageView iv_menu;
+    private TextView tv_title;
     private ProgressBar progressBar;
+    /**
+     * content
+     */
     private String url;
     private JsToAndroid jsToAndroid;
 
@@ -52,7 +62,7 @@ public class ActionWeb extends AppCompatActivity {
         ActionWebViewClient client = new ActionWebViewClient(jsToAndroid, progressBar);
         webView.setWebViewClient(client);
         //设置WebChromeClient对象
-        ActionWebChromeClient chromeClient = new ActionWebChromeClient(mContext, progressBar);
+        ActionWebChromeClient chromeClient = new ActionWebChromeClient(mContext, progressBar, tv_title);
         webView.setWebChromeClient(chromeClient);
         //加载url
         url = "file:///android_asset/index.html";
@@ -61,7 +71,9 @@ public class ActionWeb extends AppCompatActivity {
 
     private void findView() {
         webView = (WebView) findViewById(R.id.webView);
-        progressBar = (ProgressBar) findViewById(R.id.progress);
+        iv_menu = (ImageView) findViewById(R.id.iv_menu);
+        tv_title = (TextView) findViewById(R.id.tv_title);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
     }
 
 }
